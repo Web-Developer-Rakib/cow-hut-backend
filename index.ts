@@ -7,7 +7,7 @@ import { errorHandler } from "./middlewares/errorHandler";
 import { routes } from "./utils/routes";
 dotEnv.config();
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 // Middlewares
 app.use(bodyParser.json());
 app.use(errorHandler);
