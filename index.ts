@@ -24,8 +24,9 @@ mongoose
   });
 // Routes
 routes.map((route) => app.use(`/api/v1/${route.path}`, route.router));
+// Server homepage for test
 app.use("/", (req: Request, res: Response) => {
-  res.send("Hello world");
+  res.send("Server is running...");
 });
 // Server listning
 app.listen(port, () => {
