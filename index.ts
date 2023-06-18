@@ -1,7 +1,7 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import dotEnv from "dotenv";
-import express from "express";
+import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import { errorHandler } from "./middlewares/errorHandler";
 import { routes } from "./utils/routes";
@@ -24,7 +24,9 @@ mongoose
   });
 // Routes
 routes.map((route) => app.use(`/api/v1/${route.path}`, route.router));
-
+app.use("/", (req: Request, res: Response) => {
+  res.send("Hello world");
+});
 // Server listning
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
