@@ -9,10 +9,10 @@ import {
 import express from "express";
 const cowRouter = express.Router();
 
-cowRouter.post("/create-cow", createCow);
+cowRouter.post("/", createCow);
+cowRouter.get("/", getAllCows);
 cowRouter.get("/:cowId", getSingleCow);
 cowRouter.put("/:cowId", updateCow);
-cowRouter.get("/", getAllCows);
 cowRouter.delete("/:cowId", deleteCow);
 
 export default cowRouter;
