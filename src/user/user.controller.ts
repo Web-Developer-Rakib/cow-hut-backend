@@ -1,30 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { SortOrder } from "mongoose";
-import { IUser, UserModel } from "./user.model";
+import { UserModel } from "./user.model";
 
-export const createUsers = async (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): Promise<void> => {
-  try {
-    const userData: IUser = req.body;
-    if (!userData) {
-      res.sendStatus(400);
-    } else {
-      const user = new UserModel(userData);
-      await user.save();
-      res.status(200).json({
-        success: true,
-        statusCode: 200,
-        message: "Users created successfully",
-        data: user,
-      });
-    }
-  } catch (error) {
-    next(error);
-  }
-};
 export const getAllUsers = async (
   req: Request,
   res: Response,

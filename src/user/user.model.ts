@@ -1,4 +1,5 @@
 import { Document, Schema, model } from "mongoose";
+import hashPassword from "../../utils/hashPassword";
 
 // User interface
 interface IUser {
@@ -33,7 +34,8 @@ const userSchema = new Schema<IUserDocument>(
   },
   { timestamps: true }
 );
-
+// Hash password before save to the database
+userSchema.pre<IUser>("save", hashPassword);
 // User model
 const UserModel = model<IUserDocument>("User", userSchema);
 

@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { SortOrder } from "mongoose";
 import { CowModel, ICow } from "./cow.model";
 
-export const createCows = async (
+export const createCow = async (
   req: Request,
   res: Response,
   next: NextFunction

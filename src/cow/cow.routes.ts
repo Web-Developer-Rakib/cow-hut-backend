@@ -1,5 +1,5 @@
 import {
-  createCows,
+  createCow,
   deleteCow,
   getAllCows,
   getSingleCow,
@@ -9,10 +9,10 @@ import {
 import express from "express";
 const cowRouter = express.Router();
 
+cowRouter.post("/create-cow", createCow);
 cowRouter.get("/:cowId", getSingleCow);
 cowRouter.put("/:cowId", updateCow);
 cowRouter.get("/", getAllCows);
-cowRouter.post("/create", createCows);
 cowRouter.delete("/:cowId", deleteCow);
 
 export default cowRouter;

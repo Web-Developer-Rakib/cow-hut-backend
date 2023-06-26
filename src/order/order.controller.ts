@@ -74,6 +74,29 @@ export const createOrder = async (
     next(error);
   }
 };
+export const getSingleOrder = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { orderId } = req.params;
+    const order = OrderModel.findOne({ _id: orderId })
+      .populate("cow buyer")
+      .exec();
+    if (!order) {
+      res.status(404).json({ error: "Order not found." });
+    }
+    res.status(200).json({
+      success: true,
+      statusCode: 200,
+      message: "Order information retrieved successfully",
+      data: order,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 export const getAllOrders = async (
   req: Request,
   res: Response,

@@ -1,4 +1,5 @@
 import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotEnv from "dotenv";
 import express, { Request, Response } from "express";
@@ -10,6 +11,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 // Middlewares
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(errorHandler);
 app.use(cors());
 // Database connections
